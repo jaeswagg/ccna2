@@ -1,0 +1,102 @@
+config t
+vlan 3
+name Caltexcamsur.com
+exit
+Interface vlan 3
+ desc Caltexcamsur.com
+ no shut
+ ip add 10.0.1.1 255.255.255.0
+exit
+ip dhcp excluded-add 10.0.1.1 10.0.1.20
+ip dhcp pool Caltexcamsur
+ network 10.0.1.0 255.255.255.0
+ domain-name Caltexcamsur.com
+dns-server 8.8.8.8
+ default-router 10.0.1.1
+end
+
+@A1
+config t
+int e0/0
+switchport mode access
+switchport access vlan 3 
+end
+sh vlan brief
+
+@p1:
+config t
+INT E0/0
+no ip address dhcp
+ip address dhcp
+no shut
+do bp
+
+!!FOR ACCENTURE
+config t
+vlan 4
+name ACCENTURE
+exit
+Interface vlan 4
+ desc ACCENTURE.com
+ no shut
+ ip add 10.0.0.33 255.255.255.224
+exit
+ip dhcp excluded-add 10.0.0.33 10.0.1.35
+ip dhcp pool ACCENTURE
+ network 10.0.0.32 255.255.255.224
+ domain-name ACCENTURE.com
+dns-server 8.8.8.8
+ default-router 10.0.0.33
+end
+
+@D2
+config t
+int e1/0
+switchport mode access
+switchport access vlan 4
+end
+sh vlan brief
+
+@p2
+config t
+INT E1/0
+no ip address dhcp
+ip address dhcp
+no shut
+do bp
+
+
+
+!!FOR ACCENTURESG
+config t
+vlan 13
+name ACCENTURESG
+exit
+Interface vlan 13
+ desc ACCENTURESG.com
+ no shut
+ ip add 10.0.4.1 255.255.252.0
+exit
+ip dhcp excluded-add 10.0.4.1 10.0.4.100
+ip dhcp pool ACCENTURESG
+ network 10.0.4.0 255.255.252.0
+ domain-name ACCENTURESG.com
+dns-server 8.8.8.8
+ default-router 10.0.4.1
+end
+
+@C2
+config t
+int e1/0
+switchport mode access
+switchport access vlan 13
+end
+sh vlan brief
+
+@S2
+config t
+INT E1/0
+no ip address dhcp
+ip address dhcp
+no shut
+do bp
