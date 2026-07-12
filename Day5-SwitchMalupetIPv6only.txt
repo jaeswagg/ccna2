@@ -1,7 +1,7 @@
 15 - 1 1 1 1  f
 14 - 1 1 1 0  e
 13 - 1 1 0 1  d
-12 - 1 1 0 0  c
+ - 1 1 0 0  c
 11 - 1 0 1 1  b
 10 - 1 0 1 0  a
 9  - 1 0 0 1
@@ -31,7 +31,7 @@ Task1: 5 mins answers:
 	
 4. 2002:6500:0000:3000:0000:0000:0000:0000/64 = 
 	
-5. 0000:0000:0000:0000:0000:0000:0000:0001/128 = 
+5. 0000:0000:0000:0000:0000:0000:0000:0001/8 = 
 	
 6. ff00:0000:0000:beef:a00a:0aa0:0000:0000/8 = 
 
@@ -66,17 +66,17 @@ iChamba:
 6th     0  0  0   0    0  0  1   0     1  :0280:
 config t
 int lo 1
- ipv6 add cafe:cafe:cafe:1212:0000::1212/73
+ ipv6 add cafe:cafe:cafe::0000::/73
 int lo 2
- ipv6 add cafe:cafe:cafe:1212:0080::1212/73
+ ipv6 add cafe:cafe:cafe::0080::/73
 int lo 3
- ipv6 add cafe:cafe:cafe:1212:0100::1212/73
+ ipv6 add cafe:cafe:cafe::0100::/73
 int lo 4
- ipv6 add cafe:cafe:cafe:1212:0180::1212/73
+ ipv6 add cafe:cafe:cafe::0180::/73
 int lo 5
- ipv6 add cafe:cafe:cafe:1212:0200::1212/73
+ ipv6 add cafe:cafe:cafe::0200::/73
 int lo 6
- ipv6 add cafe:cafe:cafe:1212:0280::1212/73
+ ipv6 add cafe:cafe:cafe::0280::/73
  do sh ipv6 int brief
 Configure IPV6 OSPF:
 @EDGE:
@@ -125,7 +125,7 @@ config t
 ipv6 unicast-routing
 int giga 0/0/0
  no shutdown
- ipv6 add baba:bebe:fafa:1212::/64 EUI-64
+ ipv6 add baba:bebe:fafa:::/64 EUI-64
  do sh ipv6 int brief
 end
 
@@ -142,7 +142,7 @@ Method3: STatic IPv6 address manual: IKAW LAHAT
 config t
 ipv6 unicast-routing
 int giga 0/0/1
- ipv6 add BEBE:FACE:ABCD:BABA::1212/64
+ ipv6 add BEBE:FACE:ABCD:BABA::/64
  do sh ipv6 int brief
 end
 
@@ -150,7 +150,7 @@ end
 config t
 ipv6 unicast-routing
 int e1/0
- no ipv6 add aaaa:bbbb:cccc:dddd::1212/64
+ no ipv6 add aaaa:bbbb:cccc:dddd::/64
  ipv6 add aaaa:bbbb:cccc:dddd::1313/64
  do sh ipv6 int brief
 end
@@ -170,7 +170,7 @@ How to jailBreak forgotten Password:
 
 !@@@CORE SWITCH SA TAAS
 config t
-   hostname COREtaas_
+   hostname COREtaas12
    enable secret pass
    service password-encryption
    no logging console
@@ -255,7 +255,7 @@ TASK3: EXPENSIVE SWITCH/MANAGEABLE SWITCH:\ = 20k
 4  Php: loop avoidance
 5. $$: Vlan Feature $$ = 60k up
 
-COREbaba12#sh mac address-table
+COREbaba#sh mac address-table
 
 TASK4: Mastering the Switch BUttons:
 Mode Button: jailBreak/Password Forget/ factory reset 
@@ -310,7 +310,7 @@ TASK8: ACCESS PORTS VS TRUNK PORTS: lab mo sa exam.
 +
 TAAS/BABA: PASTE MUNA SA BABA, THEN TAAS! OK
 config t
-Int Range fa0/10-12
+Int Range fa0/10-
  shutdown
  switchport trunk Encap Dot1Q
  switchport mode trunk
@@ -571,7 +571,7 @@ cisco = PortAggregationProtocol: PaGP
 Combinding Two/More Layer 2 links AS ONE! Unite/UNITY
 @taas/BABA:
 config t
-Int Range fa0/10-12
+Int Range fa0/10-
  channel-group 1 mode active
  channel-protocol Lacp
  do sh etherchannel summary
