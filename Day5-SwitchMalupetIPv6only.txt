@@ -1,7 +1,7 @@
 15 - 1 1 1 1  f
 14 - 1 1 1 0  e
 13 - 1 1 0 1  d
- - 1 1 0 0  c
+12 - 1 1 0 0  c
 11 - 1 0 1 1  b
 10 - 1 0 1 0  a
 9  - 1 0 0 1
@@ -31,7 +31,7 @@ Task1: 5 mins answers:
 	
 4. 2002:6500:0000:3000:0000:0000:0000:0000/64 = 
 	
-5. 0000:0000:0000:0000:0000:0000:0000:0001/8 = 
+5. 0000:0000:0000:0000:0000:0000:0000:0001/128 = 
 	
 6. ff00:0000:0000:beef:a00a:0aa0:0000:0000/8 = 
 
@@ -66,17 +66,17 @@ iChamba:
 6th     0  0  0   0    0  0  1   0     1  :0280:
 config t
 int lo 1
- ipv6 add cafe:cafe:cafe::0000::/73
+ ipv6 add cafe:cafe:cafe:1212:0000::1212/73
 int lo 2
- ipv6 add cafe:cafe:cafe::0080::/73
+ ipv6 add cafe:cafe:cafe:1212:0080::1212/73
 int lo 3
- ipv6 add cafe:cafe:cafe::0100::/73
+ ipv6 add cafe:cafe:cafe:1212:0100::1212/73
 int lo 4
- ipv6 add cafe:cafe:cafe::0180::/73
+ ipv6 add cafe:cafe:cafe:1212:0180::1212/73
 int lo 5
- ipv6 add cafe:cafe:cafe::0200::/73
+ ipv6 add cafe:cafe:cafe:1212:0200::1212/73
 int lo 6
- ipv6 add cafe:cafe:cafe::0280::/73
+ ipv6 add cafe:cafe:cafe:1212:0280::1212/73
  do sh ipv6 int brief
 Configure IPV6 OSPF:
 @EDGE:
@@ -125,7 +125,7 @@ config t
 ipv6 unicast-routing
 int giga 0/0/0
  no shutdown
- ipv6 add baba:bebe:fafa:::/64 EUI-64
+ ipv6 add baba:bebe:fafa:1212::/64 EUI-64
  do sh ipv6 int brief
 end
 
@@ -142,7 +142,7 @@ Method3: STatic IPv6 address manual: IKAW LAHAT
 config t
 ipv6 unicast-routing
 int giga 0/0/1
- ipv6 add BEBE:FACE:ABCD:BABA::/64
+ ipv6 add BEBE:FACE:ABCD:BABA::1212/64
  do sh ipv6 int brief
 end
 
@@ -150,7 +150,7 @@ end
 config t
 ipv6 unicast-routing
 int e1/0
- no ipv6 add aaaa:bbbb:cccc:dddd::/64
+ no ipv6 add aaaa:bbbb:cccc:dddd::1212/64
  ipv6 add aaaa:bbbb:cccc:dddd::1313/64
  do sh ipv6 int brief
 end
@@ -162,15 +162,15 @@ ipv6  route  ::/0   face:cafe:face:cafe::aaaa
 How to jailBreak forgotten Password:
 1. remove power, press mode after 8 secs:
 2. switch:   HOW TO JAILBREAK A CISCO SWITCH:
-            flash_init
-	    load_helper
+            flash~~init
+	    load~~helper
             rename flash:config.text flash:config.old
             delete  flash:config.text
             boot
 
 !@@@CORE SWITCH SA TAAS
 config t
-   hostname COREtaas
+   hostname COREtaas~~
    enable secret pass
    service password-encryption
    no logging console
@@ -185,24 +185,24 @@ config t
       exec-timeout 0 0
    Int Vlan 1
      no shutdown
-	 ip add 10._.1.2 255.255.255.0
+	 ip add 10.~~.1.2 255.255.255.0
 	 description MGMTDATA
    Int Vlan 10
      no shutdown
-	 ip add 10._.10.2 255.255.255.0
+	 ip add 10.~~.10.2 255.255.255.0
 	 description WIRELESS
    Int Vlan 50
      no shutdown
-	 ip add 10._.50.2 255.255.255.0
+	 ip add 10.~~.50.2 255.255.255.0
 	 description IPCCTV
    Int Vlan 100
      no shutdown
-	 ip add 10._.100.2 255.255.255.0
+	 ip add 10.~~.100.2 255.255.255.0
 	 description VOICEVLAN
 
 !@@@LeafSwitchONLY
 config t
-   hostname COREbaba
+   hostname COREbaba~~
    enable secret pass
    service password-encryption
    no logging console
@@ -218,22 +218,22 @@ config t
    Int Gi 0/1
      no shutdown
 	  no switchport
-	  ip add 10._._.4 255.255.255.0
+	  ip add 10.~~.~~.4 255.255.255.0
    Int Vlan 1
      no shutdown
-	 ip add 10._.1.4 255.255.255.0
+	 ip add 10.~~.1.4 255.255.255.0
 	 description MGMTDATA
    Int Vlan 10
      no shutdown
-	 ip add 10._.10.4 255.255.255.0
+	 ip add 10.~~.10.4 255.255.255.0
 	 description WIRELESS
    Int Vlan 50
      no shutdown
-	 ip add 10._.50.4 255.255.255.0
+	 ip add 10.~~.50.4 255.255.255.0
 	 description IPCCTV
    Int Vlan 100
      no shutdown
-	 ip add 10._.100.4 255.255.255.0
+	 ip add 10.~~.100.4 255.255.255.0
 	 description VOICEVLAN
 
 TASK3: THE ULTIMATE SKILL FOR A NETWORK ENGINEER.
@@ -255,12 +255,12 @@ TASK3: EXPENSIVE SWITCH/MANAGEABLE SWITCH:\ = 20k
 4  Php: loop avoidance
 5. $$: Vlan Feature $$ = 60k up
 
-COREbaba#sh mac address-table
+COREbaba12#sh mac address-table
 
 TASK4: Mastering the Switch BUttons:
 Mode Button: jailBreak/Password Forget/ factory reset 
 Poweroff, Press Mode, until
-Switch:  flash_init
+Switch:  flash~~init
 	 delete flash:config.text
          delete flash:vlan.dat
          boot
@@ -310,7 +310,7 @@ TASK8: ACCESS PORTS VS TRUNK PORTS: lab mo sa exam.
 +
 TAAS/BABA: PASTE MUNA SA BABA, THEN TAAS! OK
 config t
-Int Range fa0/10-
+Int Range fa0/10-12
  shutdown
  switchport trunk Encap Dot1Q
  switchport mode trunk
@@ -514,7 +514,7 @@ config t
 hostname coretaasPLDT
 Track 1 Int gi 0/1 line-protocol
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.~~.1.6
 standby 1 preempt
 standby 1 Priority 150
 standby 1 Track 1 decrement 60
@@ -532,7 +532,7 @@ COREBABA/GLOBE:
 config t
 hostname corebabaGLOBE
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.~~.1.6
 standby 1 preempt
 standby 1 Priority 100
 end
@@ -571,7 +571,7 @@ cisco = PortAggregationProtocol: PaGP
 Combinding Two/More Layer 2 links AS ONE! Unite/UNITY
 @taas/BABA:
 config t
-Int Range fa0/10-
+Int Range fa0/10-12
  channel-group 1 mode active
  channel-protocol Lacp
  do sh etherchannel summary
@@ -748,7 +748,6 @@ how to get certified:
 2. Lab: NAT and DHCP:
 
 3. ask sa CHAT: "latest reivewer"
-
 
 
 
